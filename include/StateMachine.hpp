@@ -9,13 +9,11 @@ namespace domobox{
 
     class DState{
         public:
-        
-
+            DState();
+            ~DState();
         private:
-
-
+            int rng;            
     };
-
 
 }
 
