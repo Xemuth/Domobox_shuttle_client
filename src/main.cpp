@@ -1,25 +1,24 @@
 #include <stdio.h>
 #include "sdkconfig.h"
 #include "StateMachine.hpp"
+#include "Observer.hpp"
 
 extern "C" {
     void app_main(void);
 }
 
-
-class Test{
+class test_subject: public domobox::Subject{
     public:
-        Test(){
-            printf("C++ Working !\n");
-        }
-        ~Test(){
-            printf("Object deletion\n");
+        const char* GetName(){
+            return "test_subject";
         }
 };
 
 void app_main()
 {
-    Test test;
-    domobox::DState state;
+    domobox::DStateContext fsm;
+    test_subject subject;
+    subject.Attach(fsm);
+    subject.Notify();
 
 }
