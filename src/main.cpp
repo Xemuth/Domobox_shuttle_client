@@ -14,14 +14,10 @@ class test_subject: public domobox::Subject{
         }
 };
 
-
-
-void app_main()
+void app_main() 
 {
     domobox::DStateContext fsm;
     test_subject subject;
     subject.Attach(fsm);
-    subject.Notify();
     fsm.Run();
-
 }
