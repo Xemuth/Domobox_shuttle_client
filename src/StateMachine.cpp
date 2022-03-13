@@ -4,7 +4,6 @@
 *                                                      *   
 * Author:  Clément Hamon                               *   
 ********************************************************/  
-#include <exception>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include "StateMachine.hpp"
@@ -12,23 +11,18 @@
 
 namespace domobox{
 
-    DStateContext::DStateContext(): state(std::unique_ptr<S_Initialisation>(new S_Initialisation)){
-        printf("Context state created\n");
-    }
-
-    DStateContext::~DStateContext(){
-        printf("Context state destroyed\n");
-    }
+    DStateContext::DStateContext(): state(std::unique_ptr<S_Initialisation>(new S_Initialisation)){}
+    DStateContext::~DStateContext(){}
     
     void DStateContext::Run(){ // Attempt to move to next step.
         for(;;){
-            auto result = std::move(state->Next());
+            std::unique_ptr<DState> result = std::move(state->Next());
             if(result){
                 auto to_release = state.release();
                 delete to_release;
                 state = std::move(result);
             }else{
-                vTaskDelay(500 / portTICK_RATE_MS);
+                vTaskDelay(5000 / portTICK_RATE_MS);
             }
         }
     }    

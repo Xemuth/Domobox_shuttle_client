@@ -1,9 +1,9 @@
-/********************************************************           
+/********************************************************
 * StateMachine -- Domobox rely is behavior on a state  *
-* machine. This one rely on the GoF state pattern      *   
-*                                                      *   
-* Author:  Clément Hamon                               *   
-********************************************************/  
+* machine. This one rely on the GoF state pattern      *
+*                                                      *
+* Author:  Clément Hamon                               *
+********************************************************/
 #ifndef STATE_MACHINE_HEADER
 #define STATE_MACHINE_HEADER
 #include <memory>
