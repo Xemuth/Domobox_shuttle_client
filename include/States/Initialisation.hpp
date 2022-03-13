@@ -2,6 +2,7 @@
 #define STATE_INITIALISATION_HEADER
 
 #include "StateMachine.hpp"
+#include <esp_err.h>
 
 namespace domobox{
 
@@ -14,6 +15,9 @@ namespace domobox{
             void Update(const char* subject);
             std::unique_ptr<DState> SetState(ALL_STATES state);
             std::unique_ptr<DState> Next();
+
+        private:
+            esp_err_t InitWifi();
     };
 
 }
