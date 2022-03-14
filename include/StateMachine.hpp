@@ -1,4 +1,4 @@
-/********************************************************
+/*******************************************************
 * StateMachine -- Domobox rely is behavior on a state  *
 * machine. This one rely on the GoF state pattern      *
 *                                                      *

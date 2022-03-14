@@ -1,3 +1,10 @@
+/*******************************************************
+* Error state -- In this state, we print the error     *
+* which lead to this state and blink the error led.    *
+* The only way to leave this state is to perform reset.*
+*                                                      *
+* Author:  Clément Hamon                               *
+********************************************************/
 #include "StateMachine.hpp"
 #include "States/Error.hpp"
 #include <esp_system.h>
@@ -11,6 +18,7 @@ namespace domobox{
     }
 
     S_Error::~S_Error(){}
+    
     ALL_STATES S_Error::GetName() const{return ALL_STATES::INITIALISATION;}
 
     std::unique_ptr<DState> S_Error::Next(){

@@ -1,4 +1,11 @@
 
+/*******************************************************
+* Initialisation state -- We init all esp32 features   *
+* needed in domobox, in case of error move to error    *
+* state and print the error description until reset.   *
+*                                                      *
+* Author:  Clément Hamon                               *
+********************************************************/
 #include "StateMachine.hpp"
 #include "States/Initialisation.hpp"
 #include "Definition.hpp"

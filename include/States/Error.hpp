@@ -18,8 +18,6 @@ namespace domobox{
             virtual ~S_Error();
 
             ALL_STATES GetName() const;
-            void Update(const char* subject);
-            std::unique_ptr<DState> SetState(ALL_STATES state);
             std::unique_ptr<DState> Next();
         
         private:

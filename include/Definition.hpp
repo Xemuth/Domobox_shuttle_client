@@ -1,9 +1,9 @@
-/*******************************************************           
+/*******************************************************
 * Defintition -- provide few features and macro for    *
 * error handling.                                      *
-*                                                      *   
-* Author:  Clément Hamon                               *   
-********************************************************/  
+*                                                      *
+* Author:  Clément Hamon                               *
+********************************************************/
 #ifndef DEFINITION_HEADER
 #define DEFINITION_HEADER
 #include <esp_err.h>

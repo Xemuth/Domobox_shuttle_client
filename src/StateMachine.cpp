@@ -1,9 +1,9 @@
-/********************************************************           
+/*******************************************************
 * StateMachine -- Domobox rely is behavior on a state  *
-* machine. This one rely on the GoF state pattern      *   
-*                                                      *   
-* Author:  Clément Hamon                               *   
-********************************************************/  
+* machine. This one rely on the GoF state pattern      *
+*                                                      *
+* Author:  Clément Hamon                               *
+********************************************************/
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
 #include "StateMachine.hpp"
