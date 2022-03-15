@@ -12,8 +12,6 @@
     The state machine is inspired from GoF Design pattern book. 
 */
 
-#define NAME(x) StateName(x)
-
 namespace domobox{
 
     enum ALL_STATES{

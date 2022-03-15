@@ -6,7 +6,9 @@
 **********************************************************/
 #ifndef STATE_CREDENTIAL_ACQUISITION_HEADER
 #define STATE_CREDENTIAL_ACQUISITION_HEADER
+
 #include "StateMachine.hpp"
+#include "Definition.hpp"
 
 namespace domobox{
 
@@ -17,8 +19,12 @@ namespace domobox{
 
             ALL_STATES GetName() const;
             std::unique_ptr<DState> Next();
-    };
 
+
+        private:
+            DomoboxConfiguration& configuration;
+            bool task_created;
+    };
 
 }
 

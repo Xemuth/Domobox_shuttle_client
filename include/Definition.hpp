@@ -1,6 +1,6 @@
 /*******************************************************
 * Defintition -- provide few features and macro for    *
-* error handling.                                      *
+* error handling. Configuration management. Etc...     *
 *                                                      *
 * Author:  Clément Hamon                               *
 ********************************************************/
@@ -9,20 +9,6 @@
 #include <esp_err.h>
 #include <string>
 #include "States/Error.hpp"
-
-static std::string _error_message_preparation(esp_err_t rc, const char *file, int line, const char *function, const char *expression){
-    char buffer[400];
-    sprintf(buffer, "ESP_ERROR %d (%s)\nFile: %s line %d\nFunction: %s\nExpression: %s\n%s\n", rc, esp_err_to_name(rc), file, line, function, expression,
-    "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-    return std::string(buffer);
-}
-
-static std::string _assert_message_preparation(const char* message_assert, const char *file, int line, const char *function, const char *expression){
-    char buffer[400];
-    sprintf(buffer, "DOMOBOX_ASSERT %s\nFile: %s line %d\nFunction: %s\nExpression: %s\n%s\n", message_assert, file, line, function, expression,
-    "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-    return std::string(buffer);
-}
 
 /*
     We check for error on ESP function. If wrong we move to Error state and print message until reset
@@ -37,7 +23,28 @@ static std::string _assert_message_preparation(const char* message_assert, const
     if(!(assert)){                                                                                                                                             \
         return std::unique_ptr<S_Error>(new S_Error(std::move(_assert_message_preparation(message_assert, __FILE__, __LINE__, __PRETTY_FUNCTION__, #assert))));\
     }                                                                                                                                                          \
-}           
+}       
+
+namespace domobox{
+
+std::string _error_message_preparation(esp_err_t rc, const char *file, int line, const char *function, const char *expression);
+std::string _assert_message_preparation(const char* message_assert, const char *file, int line, const char *function, const char *expression);
+
+class DomoboxConfiguration{
+    public:
+        static DomoboxConfiguration& Get();
+        // All the configuration of domobox is stored in this singleton:
+        bool has_credential = false;
+        bool is_connected = false;
+        bool is_error = false;
+        char* ssid[33] = {0};
+        char* password[65] = {0};
+        std::string error;
+    private:
+        static DomoboxConfiguration* instance;
+};
+
+}
 
 #endif
 
