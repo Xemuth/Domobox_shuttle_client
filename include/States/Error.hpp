@@ -7,8 +7,8 @@
 ********************************************************/
 #ifndef STATE_ERROR_HEADER
 #define STATE_ERROR_HEADER
-#include "StateMachine.hpp"
 #include <driver/gpio.h>
+#include "StateMachine.hpp"
 
 namespace domobox{
 
@@ -23,7 +23,7 @@ namespace domobox{
         private:
             std::string error_msg;
             gpio_config_t io_conf;
-            gpio_num_t alarm_led_gpio = GPIO_NUM_2;
+            gpio_num_t led = GPIO_NUM_2;
     };
 
 }

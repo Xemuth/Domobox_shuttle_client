@@ -7,6 +7,7 @@
 ********************************************************/
 #ifndef STATE_INITIALISATION_HEADER
 #define STATE_INITIALISATION_HEADER
+#include <driver/gpio.h>
 #include "StateMachine.hpp"
 
 namespace domobox{
@@ -18,6 +19,9 @@ namespace domobox{
 
             ALL_STATES GetName() const;
             std::unique_ptr<DState> Next();
+        private:
+            gpio_config_t io_conf;
+            gpio_num_t led = GPIO_NUM_17;
     };
 
 }

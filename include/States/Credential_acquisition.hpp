@@ -6,7 +6,7 @@
 **********************************************************/
 #ifndef STATE_CREDENTIAL_ACQUISITION_HEADER
 #define STATE_CREDENTIAL_ACQUISITION_HEADER
-
+#include <driver/gpio.h>
 #include "StateMachine.hpp"
 #include "Definition.hpp"
 
@@ -20,10 +20,10 @@ namespace domobox{
             ALL_STATES GetName() const;
             std::unique_ptr<DState> Next();
 
-
         private:
             DomoboxConfiguration& configuration;
-            bool task_created;
+            gpio_config_t io_conf;
+            gpio_num_t led = GPIO_NUM_4;
     };
 
 }

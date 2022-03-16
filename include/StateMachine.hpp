@@ -19,7 +19,7 @@ namespace domobox{
         CREDENTIAL_ACQUISITION = 1,
         SERVER_CREATION = 2,
         READY = 3,
-        ALARM = 4
+        ERROR = 4
     };
     
     class DState{
@@ -38,22 +38,6 @@ namespace domobox{
         private:
             std::unique_ptr<DState> state;
     };
-
-    static const char* StateName(ALL_STATES states){
-        switch (states) {
-            case ALL_STATES::INITIALISATION:
-                return "INITIALISATION";
-            case ALL_STATES::CREDENTIAL_ACQUISITION:
-                return "CREDENTIAL_ACQUISITION";
-            case ALL_STATES::SERVER_CREATION:
-                return "SERVER_CREATION";
-            case ALL_STATES::READY:
-                return "READY";
-            case ALL_STATES::ALARM:
-                return "ALARM";
-        }
-        return "UNKNOWN"; 
-    }
 }
 
 #endif

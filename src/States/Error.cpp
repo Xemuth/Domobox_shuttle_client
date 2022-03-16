@@ -13,19 +13,19 @@ namespace domobox{
     S_Error::S_Error(std::string&& error) : error_msg(std::move(error)) {
         io_conf.intr_type = GPIO_INTR_DISABLE;
         io_conf.mode = GPIO_MODE_OUTPUT;
-        io_conf.pin_bit_mask = (1ULL << alarm_led_gpio);
+        io_conf.pin_bit_mask = (1ULL << led);
         gpio_config(&io_conf);
     }
 
     S_Error::~S_Error(){}
     
-    ALL_STATES S_Error::GetName() const{return ALL_STATES::INITIALISATION;}
+    ALL_STATES S_Error::GetName() const{return ALL_STATES::ERROR;}
 
     std::unique_ptr<DState> S_Error::Next(){
         // in error, we toggle the red led and we print error message until reset
         static bool alarm_state = false;
         alarm_state = !alarm_state;
-        gpio_set_level(alarm_led_gpio, !alarm_state);
+        gpio_set_level(led, alarm_state);
         printf("%s", error_msg.c_str());
         return {};
     }
