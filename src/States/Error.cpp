@@ -8,6 +8,7 @@
 #include "StateMachine.hpp"
 #include "States/Error.hpp"
 #include <esp_system.h>
+
 namespace domobox{
 
     S_Error::S_Error(std::string&& error) : error_msg(std::move(error)) {
