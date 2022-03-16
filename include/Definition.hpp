@@ -36,9 +36,13 @@ class DomoboxConfiguration{
         // All the configuration of domobox is stored in this singleton:
         bool has_credential = false;
         bool is_connected = false;
-        bool is_error = false;
+        // Wifi configuration
+        bool bssid_set = false;
         char* ssid[33] = {0};
         char* password[65] = {0};
+        char* bssid[6] = {0};
+        // Error handling
+        bool is_error = false;
         std::string error;
     private:
         static DomoboxConfiguration* instance;
