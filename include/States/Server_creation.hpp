@@ -5,7 +5,8 @@
 *                                                      *
 * Author:  Clément Hamon                               *
 ********************************************************/
-
+#ifndef SERVER_CREATTION_HEADER
+#define SERVER_CREATTION_HEADER
 #include <driver/gpio.h>
 #include "StateMachine.hpp"
 #include "Definition.hpp"

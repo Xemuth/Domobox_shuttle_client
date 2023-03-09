@@ -39,7 +39,7 @@ namespace domobox{
                 delete to_release;
                 state = std::move(result);
             }else{
-                vTaskDelay(2000 / portTICK_RATE_MS);
+                vTaskDelay(2000 / portTICK_PERIOD_MS);
             }
         }
     }    

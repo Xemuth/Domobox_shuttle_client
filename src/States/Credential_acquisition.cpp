@@ -80,7 +80,7 @@ static void wifi_connection(void * parm){
         if(uxBits & TRY_CONNECT_BIT){
             configure_and_connect(configuration);
         }
-        vTaskDelay(5000 / portTICK_RATE_MS);
+        vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }
 
@@ -170,7 +170,7 @@ static void blink_task(void * parm){
     while(1){
         state = !state;
         gpio_set_level(led_to_blink, state);
-        vTaskDelay(400 / portTICK_RATE_MS);
+        vTaskDelay(400 / portTICK_PERIOD_MS);
     }
 }
 
